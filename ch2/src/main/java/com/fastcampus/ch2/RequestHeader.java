@@ -21,6 +21,7 @@ public class RequestHeader {
 	}
 }
 
+//°á°ú°ª
 //INFO : com.fastcampus.ch2.HomeController - Welcome home! The client locale is ko_KR.
 //host:localhost:8080
 //connection:keep-alive
