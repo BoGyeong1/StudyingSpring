@@ -13,34 +13,43 @@ import java.util.Calendar;
 
 @Controller
 public class YoilTellerMVC {
-	@RequestMapping("/getYoilMVC") // http://localhost:8080/ch2/getYoilMVC?year=2021&month=10&day=1
 
 //	    public void main(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
-	public ModelAndView main(int year, int month, int day) throws IOException {
+	@RequestMapping("/getYoilMVC") // http://localhost:8080/ch2/getYoilMVC?year=2021&month=10&day=1
+	public String main(int year, int month, int day, Model model) {
 
-		ModelAndView mv = new ModelAndView();
+		//1. ModelandView를 생성하고, 기본 뷰를 지정
+//		ModelAndView mv = new ModelAndView();
 
-		// 1. 유효성 검사
-//		if(!isValid(year,month,day)) {
-//			return "yoilError";
-//		}
+
+//		 1. 유효성 검사
+		if(!isValid(year,month,day)) {
+			return "yoilError";
+		}
 		// 2. 요일 계산
 		char yoil = getYoil(year, month, day);
 
 		// 3. 계산한 결과를 model에 저장
-		mv.addObject("year", year);
-		mv.addObject("month", month);
-		mv.addObject("day", day);
-		mv.addObject("yoil", yoil);
+//		mv.addObject("year", year);
+//		mv.addObject("month", month);
+//		mv.addObject("day", day);
+//		mv.addObject("yoil", yoil);
 		
-		// 4.결과를 보여줄 view에 저장
-		mv.setViewName("yoil");
 		
-		return mv;
+		model.addAttribute("year", year);
+        model.addAttribute("month", month);
+        model.addAttribute("day", day);
+        model.addAttribute("yoil", yoil);
+		
+//		// 4.결과를 보여줄 view에 저장
+//		mv.setViewName("yoil");
+		
+//		//5. modelandview를 반환
+//		return mv;
 
-		// return하는 값이 없으면 맵핑된 주소로 해석이 된다.
-//		return "yoil"; // WEB-INF-views/yoil.jsp
+//		 return하는 값이 없으면 맵핑된 주소로 해석이 된다.
+		return "yoil"; // WEB-INF-views/yoil.jsp
 
 	}
 
